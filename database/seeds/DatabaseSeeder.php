@@ -39,21 +39,21 @@ class DatabaseSeeder extends Seeder
         $com->save();
 
         $role_admin = new App\Role;
-        $role_admin->title = "Admin";
-        $role_admin->slug = "admin";
-        $role_admin->level = 3;
+        $role_admin->title = config('roles.ADMIN.title');
+        $role_admin->slug = config('roles.ADMIN.slug');
+        $role_admin->level = config('roles.ADMIN.level');
         $role_admin->save();
 
         $role_manager = new App\Role;
-        $role_manager->title = "Manager";
-        $role_manager->slug = "manager";
-        $role_manager->level = 2;
+        $role_manager->title = config('roles.MANAGER.title');
+        $role_manager->slug = config('roles.MANAGER.slug');
+        $role_manager->level = config('roles.MANAGER.level');
         $role_manager->save();
 
         $role_writer = new App\Role;
-        $role_writer->title = "Writer";
-        $role_writer->slug = "writer";
-        $role_writer->level = 1;
+        $role_writer->title = config('roles.WRITER.title');
+        $role_writer->slug = config('roles.WRITER.slug');
+        $role_writer->level = config('roles.WRITER.level');
         $role_writer->save();
 
         $u->roles()->attach($role_admin);

@@ -36,4 +36,17 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Post');
     }
+
+    public function hasRole($role_slug)
+    {
+        if (!$this->roles) {
+            return false;
+        }
+
+        $role_level = (new Role)->getRoleLevel($role_slug);
+
+        return $this->roles->first(function ($val) use ($role_level) {
+            return $val->level >= $role_level;
+        }) !== null;
+    }
 }
